@@ -351,17 +351,6 @@
   .detail-stats .dstat span{
     font-family:var(--font-mono);font-size:11px;letter-spacing:0.06em;text-transform:uppercase;color:var(--grey);
   }
-  .detail-writeup{
-    border:1px dashed rgba(245,241,230,0.3);
-    border-radius:10px;
-    padding:26px;
-    font-size:15px;line-height:1.7;color:var(--grey);
-    max-width:680px;
-  }
-  .detail-writeup .placeholder-tag{
-    font-family:var(--font-mono);font-size:11px;letter-spacing:0.06em;text-transform:uppercase;
-    color:var(--coral);display:block;margin-bottom:10px;
-  }
   .detail-gallery{
     display:grid;
     grid-template-columns:repeat(2,1fr);
@@ -592,7 +581,6 @@
       </div>
       <h2 class="detail-title" id="detailTitle"></h2>
       <div class="detail-stats" id="detailStats"></div>
-      <div class="detail-writeup" id="detailWriteup"></div>
       <div class="detail-gallery" id="detailGallery"></div>
       <div class="detail-nav">
         <button class="detail-navbtn" id="detailPrev">← Previous</button>
@@ -658,13 +646,6 @@
 
 <script>
   document.getElementById('year').textContent = new Date().getFullYear();
-
-  const categoryBlurb = {
-    product: "the problem you were solving, your role in the process, and the outcome for the user or business.",
-    branding: "the brief, your creative direction, and how the identity came together.",
-    motion: "the concept, the tools and technique, and what it was made for.",
-    print: "the concept behind the piece and how it was produced."
-  };
 
   function localImagesFor(plateNumber, max = 8){
     const padded = String(plateNumber).padStart(2,'0');
@@ -800,9 +781,6 @@
       <div class="dstat"><b>${p.views.toLocaleString()}</b><span>Views</span></div>
       <div class="dstat"><b>${p.appr.toLocaleString()}</b><span>Appreciations</span></div>
     `;
-    document.getElementById('detailWriteup').innerHTML = p.writeup
-      ? p.writeup
-      : `<span class="placeholder-tag">Add your case study →</span>This is where the story of "${p.title}" goes — ${categoryBlurb[p.cat]}`;
     const galleryEl = document.getElementById('detailGallery');
     galleryEl.innerHTML = '';
     (p.images || []).forEach(candidates => {

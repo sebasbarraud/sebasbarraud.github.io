@@ -1,2 +1,0 @@
-# sebasbarraud.github.io
-Portfolio
